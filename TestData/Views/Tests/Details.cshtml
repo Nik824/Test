@@ -1,0 +1,48 @@
+﻿@model TestData.Models.Test
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Test</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Caption)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Caption)
+        </dd>
+
+    </dl>
+</div>
+     
+@foreach (var question in Model.Question)
+{
+    <br />
+     //   @Html.LabelFor(q => question.Text)
+    <br />
+
+            @Html.DisplayFor(q => question.Text)
+
+
+            for (var i = 0; i < question.Answer.Count; i++)
+            {
+        <br />
+                    @*@Html.HiddenFor(x => question.Answer[i].Id)*@
+        @Html.DisplayFor(x=>question.Answer[i].Text)
+                    @Html.CheckBoxFor(x => question.Answer[i].IsCorrect)
+        @Html.CheckBox("question.Answer[i].IsCorrect",false)
+                    @*@Html.DisplayFor(x => question.Answer[i].Id)*@
+
+
+            }
+}
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

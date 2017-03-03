@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script type="text/javascript">
+
+     
+
+        var i = 1;
+
+
+
+
+            function get() {
+
+                var quest = document.getElementById('question');
+                var articleDiv = document.getElementById('Question[0].Text');
+
+                var newquest = quest.cloneNode(true);
+                var newArticleDiv = articleDiv.cloneNode(true);
+
+                var answer = document.getElementById('answer');
+                var newanswer = answer.cloneNode(true)
+
+                newArticleDiv.setAttribute("id", "Question["+i+"].Text");
+                newArticleDiv.setAttribute("name", "Question[" + i + "].Text");
+                var elemt = document.createElement("br");
+               f.appendChild(elemt);
+                alert(i);
+              f.appendChild(newquest);
+               // f.appendChild(elemt);
+               
+             f.appendChild(newArticleDiv);
+               // f.appendChild(elemt);
+               
+               f.appendChild(newanswer);
+             
+              //  f.appendChild(elemt);
+
+                var dropid = document.getElementById('Question[0].Answer[0].Text');
+                var check = document.getElementById('Question[0].Answer[0].IsCorrect');
+                for (var j = 0; j < 5; j++) {
+                   
+                    var nD = dropid.cloneNode(true);
+                    var ncheck = check.cloneNode(true);
+                    nD.setAttribute("id", "Question[" + i + "].Answer[" + j + "].Text");
+                    nD.setAttribute("name", "Question[" + i + "].Answer[" + j + "].Text");
+                    ncheck.setAttribute("name", "Question[" + i + "].Answer[" + j + "].IsCorrect");
+                    nD.setAttribute("value", "");
+                    var elem = document.createElement("br");
+                    f.appendChild(elem);
+                    f.appendChild(nD);
+                    f.appendChild(ncheck);
+                }
+              
+                f.appendChild(elemt);
+      
+             alert("down")
+              
+                i++;
+
+              
+
+        }
+    </script>
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
