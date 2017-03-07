@@ -79,7 +79,7 @@ namespace TestData.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Caption")] Test test)
+        public ActionResult Edit([Bind(Include = "Id,Caption,Question")] Test test)
         {
             if (ModelState.IsValid)
             {

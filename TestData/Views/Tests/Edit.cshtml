@@ -25,6 +25,20 @@
             </div>
         </div>
 
+       
+            @foreach (var question in Model.Question)
+        {
+            @Html.Label("Question")<br/>
+            @Html.EditorFor(model => question.Text)<br />
+                foreach (var answer in question.Answer)
+                {     @Html.Label("Answers")<br />
+                    @Html.EditorFor(model =>answer.Text)
+                    @Html.EditorFor(model => answer.IsCorrect)<br/>
+                }
+            }
+            
+
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
